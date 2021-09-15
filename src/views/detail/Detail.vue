@@ -7,7 +7,8 @@
       <detail-shop-info :shop="shop" />
       <detail-images-info :images-info="detailsInfo" @imgLoad="imgLoad" />
       <detail-param-info :param-info="paramInfo"/>
-      <detail-comment-info :commentInfo="conment-info"/>
+      <detail-comment-info :commentInfo="comment-info"/>
+      <goods-list :goods="recommends"/>
       </scroll>
   </div>
 </template>
@@ -22,8 +23,10 @@ import DetailParamInfo from './childComps/DetailParamInfo.vue'
 import DetailCommentInfo from './childComps/DetailCommentInfo.vue'
 
  import Scroll from 'components/common/scroll/Scroll'
+ import GoodsList from 'components/content/goods/GoodsList'
 
-  import {getDetail,Goods,Shop,GoodsParams} from 'network/detail.js'
+  import {getDetail,Goods,Shop,GoodsParams,getRecommend} from 'network/detail.js'
+//    import {debounce} from 'common/ultils' 
 
 export default {
    name:"Detail",
@@ -35,7 +38,9 @@ export default {
         Scroll,
         DetailImagesInfo, 
         DetailParamInfo,
-        DetailCommentInfo
+        DetailCommentInfo,
+        GoodsList,
+        
         },
     data(){
         return {
@@ -45,7 +50,8 @@ export default {
            shop:{},
            detailsInfo:{},
            paramInfo:{},
-           commentInfo:{}
+           commentInfo:{},
+           recommends:[]
         }
     },
     created(){
@@ -76,11 +82,24 @@ export default {
                 this.commentInfo =data.rate.list[0];
             }
         })
+    
+        // 3.请求推荐数据
+        getRecommend().then(res=>{
+           this.recommends=res.data.list
+            })
+    
     },
     methods:{
         imageLoad(){
             this.$refs.scroll.refresh()
         }
+    },
+    mounted(){
+        // let refresh =debounce(this.$refs.scroll.refresh,100)
+
+        // this.$bus.$on('itemImageLoad',()=>{
+        //    refresh()
+        // })
     }
 }
 </script>

@@ -48,7 +48,7 @@ import GoodList from 'components/content/goods/GoodsList'
 import Scroll from 'components/common/scroll/Scroll'
 import BackTop from 'components/content/backTop/BackTop'
 
-import mybus from "../../mybus"
+// import mybus from "../../mybus"
 
 import {
   getHomeMultidata,
@@ -101,10 +101,6 @@ export default {
        this.getHomeGoods('pop')
        this.getHomeGoods('new')
        this.getHomeGoods('sell')
-
-      
-
-
   },
   mounted(){
     // 1.图片加载完成的事件监听
@@ -125,7 +121,11 @@ export default {
   },
   deactivated(){
     // console.log("disactive")
+    // 1.保存y值
     this.saveY= this.$refs.scroll.getScrollY()
+
+    // 2.取消全局事件的监听
+    // this.$bus.$off()
   },
   methods:{
     // 事件监听相关的方法

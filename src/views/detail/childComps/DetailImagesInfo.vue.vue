@@ -11,7 +11,7 @@
         <img
           :key="imageIndex"
           :src="image"
-          @load="imgLoad"
+          @load="imageLoad"
           alt=""
           v-for="(image, imageIndex) in item .list"
         />
@@ -38,8 +38,9 @@ export default {
     }
   },
   methods: {
-    imgLoad() {
+    imageLoad() {
       // 判断 所有的图片都加载完成了再发送
+      
       if (++this.count === this.imagesLength) {
         this.$emit("imgLoad");
       }
