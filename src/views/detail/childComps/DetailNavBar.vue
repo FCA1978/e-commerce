@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import NavBar from '../../../components/common/navbar/NavBar.vue'
+import NavBar from 'components/common/navbar/NavBar.vue'
 export default {
     name:"DetailNavBar",
     components:{
@@ -36,7 +36,8 @@ export default {
     },
     methods:{
         titleClick(index){
-            this.currentIndex=index
+            this.currentIndex=index;
+            this.$emit('titleClick',index);
         },
         backClick(){
             this.$router.back()
@@ -57,7 +58,7 @@ export default {
     }
 
     .active{
-        color: blue;
+        color: #87ceeb;
     }
 
     #detail-back{

@@ -10,7 +10,8 @@
 </template>
 
 <script>
-// import mybus from "../../../mybus"
+
+// import bus from "./bus";
 
 export default {
     name:'GoodsListItem',
@@ -27,16 +28,16 @@ export default {
     },
     methods:{
       imageLoad(){ 
-      //   if(this.$route.path.indexOf('/home')){
-       
-      // //  this.$.emit('homeitemImageLoad')
-      // }else if(this.$route.path.indexOf('/detail')!=-1){
-        // this.$mybus.emit('detailitemImageLoad')
-      
+         if(this.$route.path.indexOf('/home')!=-1){  
+         this.$bus.emit('homeItemImageLoad')
+        
+      }else if(this.$route.path.indexOf('/detail')){
+         this.$mybus.emit('detailItemImageLoad') 
+       }
       }, 
-     
       itemClick(){
         // console.log("跳转到详情页")
+        // $router是全局的路由器对象，可以通过$router.push直接跳转到对应的链接与router-link跳转相同
         this.$router.push("/detail/"+this.goodsItem.iid)
       }
     },

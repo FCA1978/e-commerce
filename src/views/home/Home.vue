@@ -48,7 +48,7 @@ import GoodList from 'components/content/goods/GoodsList'
 import Scroll from 'components/common/scroll/Scroll'
 import BackTop from 'components/content/backTop/BackTop'
 
-// import mybus from "../../mybus"
+// import bus from "/bus";
 
 import {
   getHomeMultidata,
@@ -105,9 +105,10 @@ export default {
   mounted(){
     // 1.图片加载完成的事件监听
     const refresh = debounce('this.$refs.scroll.refresh',200)
- // this.$mybus.on('itemImageLoad',()=>{
-    //   refresh();
-    // })
+       this.$bus.on('homeItemImageLoad',()=>{
+      this.$refs.scroll.refresh();
+     
+    })
 
     
   },
