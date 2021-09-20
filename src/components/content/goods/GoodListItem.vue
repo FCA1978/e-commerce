@@ -1,6 +1,6 @@
 <template>
   <div class="goods-item" @click="itemClick">
-      <img :src="showImage" @load="imageLoad">
+      <img v-lazy="showImage" @load="imageLoad">
       <div class="goods-info">
           <p>{{goodsItem.title}}</p>
           <span class="price">{{goodsItem.price}}</span>
@@ -32,7 +32,7 @@ export default {
          this.$bus.emit('homeItemImageLoad')
         
       }else if(this.$route.path.indexOf('/detail')){
-         this.$mybus.emit('detailItemImageLoad') 
+         this.$bus.emit('detailItemImageLoad') 
        }
       }, 
       itemClick(){

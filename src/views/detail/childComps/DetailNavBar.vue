@@ -58,7 +58,7 @@ export default {
     }
 
     .active{
-        color: #87ceeb;
+        color: blue;
     }
 
     #detail-back{
