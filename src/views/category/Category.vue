@@ -1008,7 +1008,7 @@
  
 </template>
 
-<script>
+<script >
 import BScroll from 'better-scroll'
 
 export default {
@@ -1048,7 +1048,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .wrapper{
     height: 150px;
     /* background-color:blue; */

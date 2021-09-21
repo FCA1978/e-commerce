@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <nav-bar class="home-nav">
-      <template v-slot:center><div>运动商城</div></template>
+      <template v-slot:center><div>CaesarMall</div></template>
       </nav-bar>  
        <tab-control class="fade-tab-control"  
       :titles="['流行','新款','精选']"
